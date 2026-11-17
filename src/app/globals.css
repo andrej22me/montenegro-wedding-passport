@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-parchment: #f4ebe1;
+  --color-card: #fbf8f3;
+  --color-navy: #1f3044;
+  --color-ink: #2e2a25;
+  --color-muted: #655d53;
+  --color-gold: #9e7e46;
+  --color-gold-light: #c8b082;
+  --color-terracotta: #b97a60;
+  --font-display: var(--font-cinzel), Georgia, serif;
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-script: var(--font-pinyon), cursive;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  background-color: #f4ebe1;
+  background-image:
+    radial-gradient(at 15% 20%, rgba(216, 167, 160, 0.12) 0px, transparent 50%),
+    radial-gradient(at 85% 35%, rgba(168, 192, 201, 0.16) 0px, transparent 55%),
+    radial-gradient(at 50% 85%, rgba(158, 126, 70, 0.1) 0px, transparent 50%);
+}
+
+.passport-card {
+  position: relative;
+  background: linear-gradient(180deg, #fbf8f3 0%, #f4ebe1 100%);
+  border: 1px solid rgba(158, 126, 70, 0.32);
+  box-shadow: 0 20px 50px -15px rgba(31, 48, 68, 0.15);
+}
+
+.passport-card::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(158, 126, 70, 0.2);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.multiply {
+  mix-blend-mode: multiply;
+}
+
+@keyframes map-pulse {
+  from {
+    transform: scale(0.85);
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.map-pulse {
+  transform-origin: center;
+  animation: map-pulse 1.8s ease-out infinite;
+}

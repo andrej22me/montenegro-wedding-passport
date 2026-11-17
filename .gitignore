@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+.vercel
+*.tsbuildinfo
+.env*
+.DS_Store
+npm-debug.log*
+
+# Guest rooming list (personal data, not used by the site)
+HOTEL MASTER ROOMING LIST._.xlsx

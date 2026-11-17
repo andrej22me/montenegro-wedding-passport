@@ -1,0 +1,40 @@
+[
+  {
+    "image": "/images/photos/hero.jpg",
+    "author": "Netzach",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:View_of_the_Kotor_Bay_from_the_road_from_Lovcen.jpg"
+  },
+  {
+    "image": "/images/photos/forza-kuk.jpg",
+    "source": "Forza Kuk, forzagroup.me",
+    "license": "Venue photo, permission required"
+  },
+  {
+    "image": "/images/photos/boat-day.jpg",
+    "author": "Jocelyn Erskine-Kellie",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Church_of_Our_Lady_of_the_Rocks,_Perast.jpg"
+  },
+  {
+    "image": "/images/photos/ribarsko-selo.jpg",
+    "source": "Ribarsko Selo, ribarskoselo.com",
+    "license": "Venue photo, permission required"
+  },
+  {
+    "image": "/images/photos/savina.jpg",
+    "source": "Castel Savina, castelsavina.me",
+    "license": "Venue photo, permission required"
+  },
+  {
+    "image": "/images/photos/citadela-budva.jpg",
+    "author": "Dirgela",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Budva_Old_Town_and_Citadel.jpg"
+  },
+  {
+    "image": "/images/photos/aura.jpg",
+    "source": "Porto Montenegro, portomontenegro.com",
+    "license": "Venue photo, permission required"
+  }
+]
