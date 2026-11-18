@@ -1,0 +1,47 @@
+/* Design tokens from the approved prototype (draft 2). */
+/* Fonts (Google Fonts): Newsreader (opsz 6..72, wght 200..800, italic) + Schibsted Grotesk (wght 400..700).
+   In Next.js load both with next/font/google and map them to the two variables below. */
+
+:root {
+  /* Colour */
+  --paper: #F3F0E8;        /* page background, land on the map */
+  --paper-2: #E8E1D3;      /* tinted panels, invitation card */
+  --paper-stamp: #FBF9F4;  /* stamp border */
+  --field: #FAF8F2;        /* form inputs */
+  --ink: #16282B;          /* text, primary buttons, footer */
+  --ink-2: #4A5A5C;        /* secondary text (6.3:1 on paper) */
+  --ink-on-dark: #C9D3D2;  /* secondary text on ink */
+  --accent: #A3471F;       /* terracotta: numbers, active pin, postmarks (5.2:1 on paper) */
+  --accent-light: #F2C3A6; /* ampersand on the hero photo */
+  --sea: #BFD5D6;          /* map water */
+  --road: #CDA27C;         /* map roads */
+  --label-town: #2B3E41;
+  --label-water: #2F5A60;
+  --rule: rgba(22, 40, 43, 0.18);   /* hairlines; first row of a list uses solid --ink */
+
+  /* Type */
+  --font-display: "Newsreader", Georgia, serif;
+  --font-ui: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  /* Scale (mobile): hero name 74/0.92 light, page title 48/1 light, section 40/1 light,
+     card title 30/1.05, list title 20–22, body serif 18–21/1.4, UI 14–17, labels 12–13 semibold */
+
+  /* Shape and spacing */
+  --radius: 2px;           /* buttons, inputs, images */
+  --radius-sheet: 14px;    /* map bottom sheet top corners */
+  --gutter: 20px;          /* page side padding on mobile */
+  --tap: 44px;             /* minimum touch target */
+  --shadow-sheet: 0 -10px 30px rgba(22, 40, 43, 0.16);
+}
+
+/* Perforated stamp frame. Element size must be a multiple of 10px so the holes land on the edges. */
+.stamp {
+  box-sizing: border-box;
+  padding: 7px;
+  background: var(--paper-stamp);
+  -webkit-mask: radial-gradient(circle, #0000 3.1px, #000 3.6px) -5px -5px / 10px 10px,
+                linear-gradient(#000 0 0) content-box;
+          mask: radial-gradient(circle, #0000 3.1px, #000 3.6px) -5px -5px / 10px 10px,
+                linear-gradient(#000 0 0) content-box;
+}
+.stamp img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* Put drop-shadow on a wrapper, never on .stamp itself (the mask would clip it). */

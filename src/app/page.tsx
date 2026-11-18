@@ -1,148 +1,173 @@
-import { Compass } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import ScrollyMapSection from "@/components/ScrollyMapSection";
-import RsvpPassportForm from "@/components/RsvpPassportForm";
-import Faq from "@/components/Faq";
-import { AIRPORTS, ATTIRE, CONTACT, MOMENTS, PALETTE, WEDDING } from "@/data/weddingData";
+import Image from "next/image";
+import Link from "next/link";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import Postmark from "@/components/Postmark";
+import Stamp from "@/components/Stamp";
+import { Arrow } from "@/components/icons";
+import { COUPLE, EVENTS, HERO } from "@/data/weddingData";
 
-const h2 = "text-center font-display text-3xl uppercase tracking-[0.16em] text-navy sm:text-5xl";
+const GUIDE_LINKS = [
+  { label: "Travel and stay", href: "/guide#travel" },
+  { label: "What to wear", href: "/guide#wear" },
+  { label: "Questions", href: "/guide#questions" },
+];
+
+const shell = "mx-auto w-full max-w-[1200px] px-5 min-[900px]:px-12";
 
 export default function HomePage() {
+  const [first, second = ""] = COUPLE.names.split(" & ");
+
   return (
-    <div id="top">
-      <Navbar />
+    <div className="flex min-h-dvh flex-col bg-paper text-ink">
+      <Header />
+      <main className="flex-1">
+        <section className="relative min-[900px]:h-[min(88vh,820px)]">
+          <div className="absolute inset-y-0 right-0 left-[calc(max(0px,(100%-min(100%,1200px))/2)+48px+(min(100%,1200px)-96px)*5/12)] hidden overflow-hidden min-[900px]:block">
+            <Image src={HERO.image} alt={HERO.alt} fill priority sizes="58vw" className="object-cover" />
+            <Postmark
+              ring={HERO.postmarkRing}
+              center={COUPLE.monogram}
+              date={HERO.postmarkDate}
+              className="absolute bottom-10 left-0 -translate-x-1/2 -rotate-12"
+            />
+          </div>
+          <div className="relative h-[620px] overflow-hidden min-[900px]:hidden">
+            <Image src={HERO.image} alt={HERO.alt} fill priority sizes="100vw" className="object-cover" />
+            <div
+              aria-hidden="true"
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(180deg, transparent 48%, color-mix(in srgb, var(--ink) 82%, transparent) 100%)" }}
+            />
+            <div className="absolute right-5 bottom-7 left-5 flex flex-col text-paper">
+              <DateLine />
+              <Names first={first} second={second} ampClass="text-accent-light" />
+            </div>
+          </div>
+          <div className={`${shell} relative hidden h-full items-center min-[900px]:flex`}>
+            <div className="w-[calc(5/12*100%)] py-16 pr-8">
+              <DateLine />
+              <Names first={first} second={second} ampClass="text-accent" desktop />
+              <Invite className="mt-8 max-w-[30ch] text-[22px]" />
+            </div>
+          </div>
+        </section>
 
-      {/* Hero */}
-      <section className="border-b border-gold/25 px-5 pb-20 pt-28 sm:px-8 sm:pt-36">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-12">
-          <div className="space-y-6 text-center lg:col-span-7 lg:text-left">
-            <h1 className="font-display text-4xl uppercase leading-[1.1] tracking-[0.14em] text-navy sm:text-6xl xl:text-7xl">
-              A Journey Through <span className="text-gold">Montenegro</span>
-            </h1>
-            <p className="font-script text-3xl text-navy/90 sm:text-5xl">One love. One coast. Forever.</p>
-            <p className="font-display text-sm uppercase tracking-[0.24em] text-muted">
-              {WEDDING.place} · {WEDDING.date}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 pt-2 lg:justify-start">
-              <a
-                href="#journey-map"
-                className="inline-flex items-center gap-2.5 rounded-full bg-navy px-7 py-3.5 font-display text-xs uppercase tracking-[0.22em] text-parchment shadow-md hover:bg-[#2c435e]"
+        <section className="relative px-5 pt-7 min-[900px]:hidden">
+          <Postmark
+            ring={HERO.postmarkRing}
+            center={COUPLE.monogram}
+            date={HERO.postmarkDate}
+            className="absolute top-[-64px] right-[14px] -rotate-12"
+          />
+          <Invite className="max-w-[300px] text-[21px]" />
+        </section>
+
+        <div className={shell}>
+          <section aria-label="The weekend" className="flex flex-col gap-4 pt-12 min-[900px]:gap-6 min-[900px]:pt-24">
+            <div className="flex items-baseline justify-between">
+              <h2 className="m-0 font-display text-[30px] font-normal tracking-[-0.01em]">The weekend</h2>
+              <Link href="/weekend" className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium no-underline">
+                Open map
+                <Arrow size={16} />
+              </Link>
+            </div>
+            <div className="strip -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-5 scroll-pr-5 px-5 pt-1 pb-2 min-[900px]:mx-0 min-[900px]:grid min-[900px]:grid-cols-6 min-[900px]:gap-6 min-[900px]:overflow-visible min-[900px]:px-0">
+              {EVENTS.map((event) => (
+                <Link
+                  key={event.slug}
+                  href={`/weekend?stop=${event.n}`}
+                  className="flex w-[130px] shrink-0 snap-start flex-col text-ink no-underline min-[900px]:w-auto"
+                >
+                  <span className="min-[900px]:hidden">
+                    <Stamp src={event.image} alt="" width={130} height={162} padding={8} shadow="card" />
+                  </span>
+                  <span className="hidden min-[900px]:block">
+                    <Stamp src={event.image} alt="" width={160} height={200} padding={8} fluid shadow="card" sizes="(min-width: 1200px) 160px, 14vw" />
+                  </span>
+                  <span className="mt-2 text-xs font-semibold text-accent min-[900px]:mt-2.5">
+                    {String(event.n).padStart(2, "0")} · {event.day.slice(0, 3)}
+                  </span>
+                  <span className="mt-1 font-display text-lg leading-[1.15] min-[900px]:text-xl">{event.title}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          <div className="mt-12 border-t border-ink min-[900px]:mt-24 min-[900px]:grid min-[900px]:grid-cols-[1fr_1fr_minmax(0,360px)] min-[900px]:items-center min-[900px]:gap-8 min-[900px]:border-b min-[900px]:border-b-[var(--rule)]">
+            <dl className="grid grid-cols-2 border-b border-b-[var(--rule)] min-[900px]:col-span-2 min-[900px]:border-b-0">
+              <div className="flex flex-col gap-1 border-r border-[var(--rule)] py-4 pr-3 min-[900px]:border-r-0 min-[900px]:py-6">
+                <dt className="text-[13px] font-medium text-ink-2">Wedding</dt>
+                <dd className="m-0 font-display text-xl leading-[1.25]">
+                  {COUPLE.wedding.when}
+                  <br />
+                  {COUPLE.wedding.where}
+                </dd>
+              </div>
+              <div className="flex flex-col gap-1 py-4 pl-4 min-[900px]:py-6 min-[900px]:pl-0">
+                <dt className="text-[13px] font-medium text-ink-2">Reply by</dt>
+                <dd className="m-0 font-display text-xl leading-[1.25]">{COUPLE.replyBy}</dd>
+              </div>
+            </dl>
+            <Link
+              href="/rsvp"
+              className="mt-6 flex h-14 w-full items-center justify-between rounded-[2px] bg-ink px-5 text-[17px] font-medium text-paper no-underline hover:text-paper min-[900px]:mt-0 min-[900px]:max-w-[360px] min-[900px]:justify-self-end"
+            >
+              Reply to the invitation
+              <Arrow />
+            </Link>
+          </div>
+
+          <nav aria-label="Guide" className="mt-12 flex flex-col min-[900px]:mt-24 min-[900px]:grid min-[900px]:grid-cols-3 min-[900px]:gap-6">
+            {GUIDE_LINKS.map((link, index) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={[
+                  "flex min-h-[60px] items-center justify-between border-t border-[var(--rule)] font-display text-[22px] no-underline",
+                  index === 0 ? "border-t-ink" : "",
+                  index === GUIDE_LINKS.length - 1 ? "border-b border-b-[var(--rule)]" : "",
+                  "min-[900px]:min-h-0 min-[900px]:items-start min-[900px]:border-t-ink min-[900px]:border-b-0 min-[900px]:p-6 min-[900px]:text-[26px]",
+                ].join(" ")}
               >
-                <Compass className="h-4 w-4 text-gold-light" />
-                Explore the map
-              </a>
-              <a
-                href="#rsvp"
-                className="rounded-full border border-gold/60 bg-card px-7 py-3.5 font-display text-xs uppercase tracking-[0.22em] text-navy hover:bg-parchment"
-              >
-                RSVP
-              </a>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5">
-            <div className="passport-card rounded-2xl p-4 sm:p-5">
-              <img
-                src="/images/passport-spread.png"
-                alt="Passport invitation"
-                className="w-full rounded-xl border border-gold/30"
-              />
-              <div className="mt-4 flex items-center justify-between px-2">
-                <p className="text-lg italic text-ink">The Adriatic sets the scene, love writes the story.</p>
-                <img src="/images/kotor-stamp.png" alt="" className="multiply h-16 w-20 shrink-0 object-contain" />
-              </div>
-            </div>
-          </div>
+                {link.label}
+                <Arrow size={18} strokeWidth={1.5} />
+              </Link>
+            ))}
+          </nav>
         </div>
-      </section>
-
-      <ScrollyMapSection />
-
-      {/* Weekend */}
-      <section id="weekend" className="mx-auto max-w-7xl scroll-mt-16 px-5 py-24 sm:px-8">
-        <h2 className={h2}>The Weekend</h2>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:gap-10">
-          {MOMENTS.map((m) => (
-            <article key={m.id} className="passport-card overflow-hidden rounded-2xl">
-              <div className="p-4 pb-0">
-                <img
-                  src={m.image}
-                  alt={m.venue}
-                  className="h-60 w-full rounded-xl border border-gold/30 object-cover sm:h-72"
-                />
-              </div>
-              <div className="flex items-start gap-4 p-6 sm:p-8">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold font-display text-sm text-navy">
-                  {m.id}
-                </span>
-                <div>
-                  <h3 className="font-display text-xl uppercase tracking-[0.14em] text-navy sm:text-2xl">{m.venue}</h3>
-                  <p className="mt-1 font-display text-xs uppercase tracking-[0.2em] text-terracotta">
-                    {m.event} · {m.day}
-                  </p>
-                  <p className="mt-3 text-lg italic text-navy">{m.line}</p>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* Travel & stay */}
-      <section id="travel" className="scroll-mt-16 border-y border-gold/25 bg-[#efe5d8]/60 px-5 py-24 sm:px-8">
-        <h2 className={h2}>Travel & Stay</h2>
-        <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-3">
-          {AIRPORTS.map((a) => (
-            <div key={a.code} className="passport-card rounded-2xl p-7 text-center">
-              <span className="inline-block rounded border border-gold/35 bg-parchment px-3 py-1 font-display text-2xl tracking-[0.18em] text-navy">
-                {a.code}
-              </span>
-              <h3 className="mt-4 font-display text-lg uppercase tracking-[0.14em] text-navy">{a.name}</h3>
-              <p className="mt-1 text-lg text-ink">{a.note}</p>
-            </div>
-          ))}
-          <div id="stay" className="passport-card rounded-2xl p-7 text-center">
-            <Compass className="mx-auto h-9 w-9 text-gold" />
-            <h3 className="mt-4 font-display text-lg uppercase tracking-[0.14em] text-navy">Portonovi</h3>
-            <p className="mt-1 text-lg text-ink">Adriatic Events will confirm your room.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Attire */}
-      <section id="attire" className="scroll-mt-16 px-5 py-24 sm:px-8">
-        <h2 className={h2}>Attire</h2>
-        <div className="mt-10 flex justify-center gap-3">
-          {PALETTE.map((c) => (
-            <span key={c} className="h-10 w-10 rounded-full border border-black/10 shadow-inner sm:h-12 sm:w-12" style={{ backgroundColor: c }} />
-          ))}
-        </div>
-        <div className="mx-auto mt-10 grid max-w-4xl gap-5 sm:grid-cols-3">
-          {ATTIRE.map((a) => (
-            <div key={a.when} className="passport-card rounded-xl p-6 text-center">
-              <h3 className="font-display text-base uppercase tracking-[0.14em] text-navy">{a.what}</h3>
-              <p className="mt-1 text-lg italic text-muted">{a.when}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section id="faq" className="mx-auto max-w-3xl scroll-mt-16 px-5 pb-8 pt-8 sm:px-8">
-        <h2 className={h2}>FAQ</h2>
-        <Faq />
-      </section>
-
-      <RsvpPassportForm />
-
-      <footer className="border-t-4 border-gold bg-navy px-5 py-16 text-center text-parchment">
-        <p className="font-display text-sm uppercase tracking-[0.28em] text-gold-light">A Journey Through Montenegro</p>
-        <p className="mt-1 font-script text-3xl">One love. One coast. Forever.</p>
-        <img src="/images/ae-logo.png" alt="Adriatic Events" className="mx-auto mt-10 h-24 w-auto brightness-0 invert" />
-        <a href={`mailto:${CONTACT.email}`} className="mt-6 inline-block text-lg underline underline-offset-4">
-          {CONTACT.email}
-        </a>
-      </footer>
+      </main>
+      <Footer />
     </div>
   );
+}
+
+function DateLine() {
+  return (
+    <p className="m-0 mb-5 flex gap-2 text-sm font-medium tracking-[0.02em]">
+      {COUPLE.place} <span aria-hidden="true">·</span> {COUPLE.dates}
+    </p>
+  );
+}
+
+function Names({ first, second, ampClass, desktop = false }: { first: string; second: string; ampClass: string; desktop?: boolean }) {
+  return (
+    <h1
+      aria-label={COUPLE.names}
+      className={[
+        "m-0 font-display leading-[0.92] font-light tracking-[-0.025em]",
+        desktop ? "text-[clamp(72px,8vw,132px)]" : "text-[74px]",
+      ].join(" ")}
+    >
+      <span aria-hidden="true">
+        {first}
+        <br />
+        <span className={`italic ${ampClass}`}>&</span> {second}
+      </span>
+    </h1>
+  );
+}
+
+function Invite({ className = "" }: { className?: string }) {
+  return <p className={`m-0 font-display leading-[1.38] text-pretty ${className}`}>{COUPLE.invite}</p>;
 }

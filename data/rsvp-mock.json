@@ -1,0 +1,112 @@
+{
+  "responses": [
+    {
+      "token": "bMGg_PycY0AICi-kl2Bwp0Sg",
+      "created_at": "2026-11-17T12:16:37.886Z",
+      "updated_at": "2026-11-17T13:06:32.210Z",
+      "lead_name": "Anna Harper",
+      "email": "anna@example.com",
+      "whatsapp": "",
+      "attending": "yes",
+      "guests": [
+        "Anna Harper",
+        "James Harper"
+      ],
+      "events": {
+        "welcome-drinks": [
+          "Anna Harper",
+          "James Harper"
+        ],
+        "boat-day": [
+          "Anna Harper",
+          "James Harper"
+        ],
+        "lunch": [
+          "Anna Harper",
+          "James Harper"
+        ],
+        "rehearsal-dinner": [
+          "Anna Harper",
+          "James Harper"
+        ],
+        "wedding": [
+          "Anna Harper",
+          "James Harper"
+        ],
+        "farewell": [
+          "Anna Harper",
+          "James Harper"
+        ]
+      },
+      "dietary": {
+        "Anna Harper": "No shellfish",
+        "James Harper": ""
+      },
+      "note": "",
+      "flights_status": "added",
+      "flights_updated_at": "2026-11-17T13:07:57.509Z",
+      "last_reminder_at": ""
+    },
+    {
+      "token": "",
+      "created_at": "2026-11-17T12:17:41.010Z",
+      "updated_at": "2026-11-17T12:17:41.010Z",
+      "lead_name": "Mia",
+      "email": "mia@example.com",
+      "whatsapp": "",
+      "attending": "no",
+      "guests": [
+        "Mia"
+      ],
+      "events": {
+        "welcome-drinks": [],
+        "boat-day": [],
+        "lunch": [],
+        "rehearsal-dinner": [],
+        "wedding": [],
+        "farewell": []
+      },
+      "dietary": {},
+      "note": "We'll be away.",
+      "flights_status": "none",
+      "flights_updated_at": "",
+      "last_reminder_at": ""
+    }
+  ],
+  "flights": [
+    {
+      "token": "bMGg_PycY0AICi-kl2Bwp0Sg",
+      "group": 1,
+      "guests": [
+        "Anna Harper"
+      ],
+      "arrival_airport": "TIV",
+      "arrival_date": "5 Aug 2027",
+      "arrival_time": "",
+      "arrival_flight": "JU 401",
+      "departure_airport": "TIV",
+      "departure_date": "8 Aug 2027",
+      "departure_time": "",
+      "departure_flight": "",
+      "pickup": "no",
+      "updated_at": "2026-11-17T13:07:57.509Z"
+    },
+    {
+      "token": "bMGg_PycY0AICi-kl2Bwp0Sg",
+      "group": 2,
+      "guests": [
+        "James Harper"
+      ],
+      "arrival_airport": "TIV",
+      "arrival_date": "5 Aug 2027",
+      "arrival_time": "",
+      "arrival_flight": "JU 402",
+      "departure_airport": "TIV",
+      "departure_date": "8 Aug 2027",
+      "departure_time": "",
+      "departure_flight": "",
+      "pickup": "no",
+      "updated_at": "2026-11-17T13:07:57.509Z"
+    }
+  ]
+}

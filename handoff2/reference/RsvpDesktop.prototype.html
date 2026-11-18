@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RSVP, desktop</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Schibsted+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; display: flex; flex-direction: column; background: #F3F0E8; color: #16282B; font-family: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif">
+  <header style="height: 64px; flex-shrink: 0; box-sizing: border-box; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(22,40,43,0.12)">
+    <a href="Main.dc.html" style="font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 26px; text-decoration: none; color: #16282B">N&amp;S</a>
+    <nav aria-label="Main" style="display: flex; align-items: center; gap: 28px">
+      <a href="Weekend.dc.html" style="font-size: 15px; font-weight: 500; color: #16282B; text-decoration: none">Weekend</a>
+      <a href="Guide.dc.html" style="font-size: 15px; font-weight: 500; color: #16282B; text-decoration: none">Travel</a>
+      <a href="Guide.dc.html" style="font-size: 15px; font-weight: 500; color: #16282B; text-decoration: none">Stay</a>
+      <a href="Guide.dc.html" style="font-size: 15px; font-weight: 500; color: #16282B; text-decoration: none">Attire</a>
+      <a href="Guide.dc.html" style="font-size: 15px; font-weight: 500; color: #16282B; text-decoration: none">FAQ</a>
+      <a href="Rsvp.dc.html" aria-current="page" style="height: 44px; box-sizing: border-box; padding: 0 18px; display: flex; align-items: center; background: #16282B; color: #F3F0E8; text-decoration: none; font-size: 15px; font-weight: 500; border-radius: 2px">RSVP</a>
+    </nav>
+  </header>
+  <div style="flex: 1; display: flex; min-height: 0">
+    <div style="position: relative; width: 720px; flex-shrink: 0; overflow: hidden">
+      <img src="/images/venues/5-citadela-budva.jpg" alt="Budva Old Town and the Citadela from the sea" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+      <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,40,43,0) 40%, rgba(22,40,43,0.78) 100%)"></div>
+      <div style="position: absolute; left: 48px; bottom: 48px; color: #F3F0E8; display: flex; flex-direction: column; gap: 12px">
+        <p style="margin: 0; font-size: 15px; font-weight: 500">The wedding · Saturday 7 August, 18:00 · Citadela, Budva</p>
+        <p style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 300; font-size: 84px; line-height: 0.92; letter-spacing: -0.025em">Nicole <span style="font-style: italic; color: #F2C3A6">&amp;</span> Scott</p>
+      </div>
+    </div>
+    <div style="width: 720px; height: 836px">
+      <dc-import name="Rsvp" start="choose" mode="panel" hint-size="720px,836px"></dc-import>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

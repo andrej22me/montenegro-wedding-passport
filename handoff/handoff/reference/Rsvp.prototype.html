@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RSVP</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Schibsted+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F0E8}
+a{color:#16282B;text-underline-offset:3px}a:hover{color:#A3471F}
+.chip{height:44px;padding:0 16px;border:1px solid #16282B;border-radius:2px;background:transparent;color:#16282B;font:500 15px 'Schibsted Grotesk',Arial,sans-serif;display:flex;align-items:center;gap:8px;cursor:pointer}
+.chip.on{background:#16282B;color:#F3F0E8}
+.stamp{flex-shrink:0;box-sizing:border-box;width:50px;height:50px;padding:4px;background:#FBF9F4;-webkit-mask:radial-gradient(circle,#0000 3.1px,#000 3.6px) -5px -5px/10px 10px,linear-gradient(#000 0 0) content-box;mask:radial-gradient(circle,#0000 3.1px,#000 3.6px) -5px -5px/10px 10px,linear-gradient(#000 0 0) content-box}
+.stamp img{display:block;width:100%;height:100%;object-fit:cover}
+.field{height:52px;box-sizing:border-box;width:100%;padding:0 14px;border:1px solid #16282B;border-radius:2px;background:#FAF8F2;color:#16282B;font:400 16px 'Schibsted Grotesk',Arial,sans-serif}
+textarea.stamp{flex-shrink:0;box-sizing:border-box;width:50px;height:50px;padding:4px;background:#FBF9F4;-webkit-mask:radial-gradient(circle,#0000 3.1px,#000 3.6px) -5px -5px/10px 10px,linear-gradient(#000 0 0) content-box;mask:radial-gradient(circle,#0000 3.1px,#000 3.6px) -5px -5px/10px 10px,linear-gradient(#000 0 0) content-box}
+.stamp img{display:block;width:100%;height:100%;object-fit:cover}
+.field{height:96px;padding:12px 14px;resize:vertical}
+</style>
+</helmet>
+<div style="width: 390px; height: 2000px; box-sizing: border-box; background: #F3F0E8; color: #16282B; font-family: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif; display: flex; flex-direction: column">
+
+  <header style="height: 64px; flex-shrink: 0; box-sizing: border-box; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(22,40,43,0.14)">
+    <a href="Main.dc.html" style="font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 24px; text-decoration: none; color: #16282B">N&amp;S</a>
+    <a href="Weekend.dc.html" style="height: 44px; display: flex; align-items: center; font-size: 15px; font-weight: 500">The weekend</a>
+  </header>
+
+  <section style="padding: 28px 20px 0; display: flex; flex-direction: column; gap: 12px">
+    <h1 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 300; font-size: 52px; line-height: 1; letter-spacing: -0.02em">Will you join us?</h1>
+    <p style="margin: 0; font-size: 15px; font-weight: 600; color: #A3471F">Reply by 1 May 2027</p>
+  </section>
+
+  <sc-if value="{{isFind}}" hint-placeholder-val="{{ false }}">
+    <form onSubmit="{{find}}" style="margin: 32px 20px 0; display: flex; flex-direction: column; gap: 10px">
+      <label for="rsvp-name" style="font-size: 14px; font-weight: 500">Name on your invitation</label>
+      <input id="rsvp-name" class="field" type="text" autocomplete="name" value="{{name}}" onChange="{{onName}}">
+      <button type="submit" style="margin-top: 8px; height: 56px; border: 0; border-radius: 2px; background: #16282B; color: #F3F0E8; font: 500 17px 'Schibsted Grotesk', Arial, sans-serif; cursor: pointer">Find my invitation</button>
+      <a href="mailto:silvana@adriaticevents.com" style="margin-top: 4px; min-height: 44px; display: flex; align-items: center; font-size: 14px; color: #4A5A5C">Can't find it? Email Silvana</a>
+    </form>
+  </sc-if>
+
+  <sc-if value="{{isForm}}" hint-placeholder-val="{{ true }}">
+    <form onSubmit="{{send}}" style="margin: 28px 0 0; display: flex; flex-direction: column">
+
+      <div style="margin: 0 20px; padding: 16px; background: #E8E1D3; display: flex; justify-content: space-between; align-items: center; gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <span style="font-size: 12px; font-weight: 600; color: #4A5A5C">Invitation for</span>
+          <span style="font-family: 'Newsreader', Georgia, serif; font-size: 22px">Anna and James Harper</span>
+        </div>
+        <button type="button" onClick="{{again}}" style="min-height: 44px; padding: 0; border: 0; background: transparent; color: #16282B; font: 500 14px 'Schibsted Grotesk', Arial, sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Not you?</button>
+      </div>
+
+      <fieldset style="margin: 28px 20px 0; padding: 0; border: 0; display: flex; flex-direction: column">
+        <legend style="padding: 0 0 12px; font-family: 'Newsreader', Georgia, serif; font-size: 26px">Who's coming to what</legend>
+        <sc-for list="{{events}}" as="ev" hint-placeholder-count="5">
+          <div style="padding: 14px 0; border-top: 1px solid rgba(22,40,43,0.18); display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; align-items: center; gap: 12px">
+              <div class="stamp"><img src="{{ev.img}}" alt=""></div>
+              <span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Newsreader', Georgia, serif; font-size: 20px">{{ev.title}}</span><span style="font-size: 13px; color: #4A5A5C; font-variant-numeric: tabular-nums">{{ev.when}}</span></span>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap">
+              <sc-for list="{{ev.chips}}" as="ch" hint-placeholder-count="2">
+                <button type="button" class="chip {{ch.cls}}" aria-pressed="{{ch.pressed}}" onClick="{{ch.toggle}}">
+                  <sc-if value="{{ch.on}}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7"></path></svg></sc-if>
+                  {{ch.label}}
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </fieldset>
+
+      <div style="margin: 28px 20px 0; display: flex; flex-direction: column; gap: 8px">
+        <label for="rsvp-diet" style="font-family: 'Newsreader', Georgia, serif; font-size: 26px">Dietary needs</label>
+        <textarea id="rsvp-diet" class="field"></textarea>
+      </div>
+
+      <fieldset style="margin: 28px 20px 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 10px">
+        <legend style="padding: 0 0 12px; font-family: 'Newsreader', Georgia, serif; font-size: 26px">Airport pickup</legend>
+        <div style="display: flex; gap: 8px">
+          <button type="button" class="chip {{yesCls}}" aria-pressed="{{yesPressed}}" onClick="{{tYes}}">Yes</button>
+          <button type="button" class="chip {{noCls}}" aria-pressed="{{noPressed}}" onClick="{{tNo}}">No</button>
+        </div>
+        <sc-if value="{{needsTransfer}}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 14px">
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <label for="rsvp-airport" style="font-size: 14px; font-weight: 500">Arriving at</label>
+              <select id="rsvp-airport" class="field">
+                <option>Tivat (TIV)</option>
+                <option>Podgorica (TGD)</option>
+                <option>Dubrovnik (DBV)</option>
+              </select>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <label for="rsvp-arr" style="font-size: 14px; font-weight: 500">Landing</label>
+                <input id="rsvp-arr" class="field" type="text" placeholder="5 Aug, 14:20">
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <label for="rsvp-flight" style="font-size: 14px; font-weight: 500">Flight</label>
+                <input id="rsvp-flight" class="field" type="text" placeholder="JU 401">
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </fieldset>
+
+      <fieldset style="margin: 28px 20px 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 14px">
+        <legend style="padding: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-size: 26px">How to reach you</legend>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="rsvp-email" style="font-size: 14px; font-weight: 500">Email</label>
+          <input id="rsvp-email" class="field" type="email" autocomplete="email">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <label for="rsvp-phone" style="font-size: 14px; font-weight: 500">WhatsApp number</label>
+          <input id="rsvp-phone" class="field" type="tel" autocomplete="tel">
+        </div>
+      </fieldset>
+
+      <div style="margin: 32px 20px 40px">
+        <button type="submit" style="width: 100%; height: 56px; border: 0; border-radius: 2px; background: #16282B; color: #F3F0E8; font: 500 17px 'Schibsted Grotesk', Arial, sans-serif; cursor: pointer">Send reply</button>
+      </div>
+    </form>
+  </sc-if>
+
+  <sc-if value="{{isDone}}" hint-placeholder-val="{{ false }}">
+    <section style="margin: 32px 20px 0; display: flex; flex-direction: column; gap: 16px">
+      <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 34px; line-height: 1.1">Thank you, Anna and James.</h2>
+      <dl style="margin: 0; display: flex; flex-direction: column">
+        <div style="display: flex; justify-content: space-between; padding: 14px 0; border-top: 1px solid #16282B"><dt style="font-size: 16px">Anna</dt><dd style="margin: 0; font-size: 16px; font-variant-numeric: tabular-nums">{{countA}}</dd></div>
+        <div style="display: flex; justify-content: space-between; padding: 14px 0; border-top: 1px solid rgba(22,40,43,0.18); border-bottom: 1px solid rgba(22,40,43,0.18)"><dt style="font-size: 16px">James</dt><dd style="margin: 0; font-size: 16px; font-variant-numeric: tabular-nums">{{countJ}}</dd></div>
+      </dl>
+      <p style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: 19px; line-height: 1.4">A copy is on its way to your email. To change anything before 1 May 2027, search for your name again.</p>
+      <a href="Weekend.dc.html" style="height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; background: #16282B; color: #F3F0E8; text-decoration: none; font-size: 17px; font-weight: 500; border-radius: 2px">Back to the weekend
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
+      </a>
+    </section>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"step":{"editor":"enum","options":["find","form","done"],"default":"form"},"$preview":{"width":390,"height":2000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      step: null,
+      name: '',
+      transfer: 'yes',
+      att: [[true, true], [true, false], [true, true], [true, true], [true, true]]
+    };
+  }
+  renderVals() {
+    const step = this.state.step || this.props.step || 'form';
+    const guests = ['Anna', 'James'];
+    const evs = [
+      { title: 'Welcome drinks', when: 'Thu 5 Aug · 19:00', img: '/images/venues/1-forza-kuk.jpg' },
+      { title: 'Boat day', when: 'Fri 6 Aug · 10:30', img: '/images/venues/2-boat-day.jpg' },
+      { title: 'Lunch', when: 'Fri 6 Aug · 13:30', img: '/images/venues/3-ribarsko-selo.jpg' },
+      { title: 'The wedding', when: 'Sat 7 Aug · 18:00', img: '/images/venues/5-citadela-budva.jpg' },
+      { title: 'Farewell', when: 'Sun 8 Aug · 13:00', img: '/images/venues/6-aura-beach.jpg' }
+    ];
+    const att = this.state.att;
+    const events = evs.map((e, i) => ({
+      title: e.title,
+      when: e.when,
+      img: e.img,
+      chips: guests.map((g, j) => ({
+        label: g,
+        on: att[i][j],
+        cls: att[i][j] ? 'on' : '',
+        pressed: att[i][j] ? 'true' : 'false',
+        toggle: () => {
+          const next = this.state.att.map((r) => r.slice());
+          next[i][j] = !next[i][j];
+          this.setState({ att: next });
+        }
+      }))
+    }));
+    const count = (j) => {
+      const n = att.filter((r) => r[j]).length;
+      return n === 0 ? 'Not attending' : n + ' of ' + evs.length + ' events';
+    };
+    const t = this.state.transfer;
+    return {
+      isFind: step === 'find',
+      isForm: step === 'form',
+      isDone: step === 'done',
+      name: this.state.name,
+      onName: (e) => this.setState({ name: e.target.value }),
+      find: (e) => { e.preventDefault(); this.setState({ step: 'form' }); },
+      again: () => this.setState({ step: 'find' }),
+      send: (e) => { e.preventDefault(); this.setState({ step: 'done' }); },
+      events: events,
+      yesCls: t === 'yes' ? 'on' : '',
+      noCls: t === 'no' ? 'on' : '',
+      yesPressed: t === 'yes' ? 'true' : 'false',
+      noPressed: t === 'no' ? 'true' : 'false',
+      tYes: () => this.setState({ transfer: 'yes' }),
+      tNo: () => this.setState({ transfer: 'no' }),
+      needsTransfer: t === 'yes',
+      countA: count(0),
+      countJ: count(1)
+    };
+  }
+}
+</script>
+</body>
+</html>

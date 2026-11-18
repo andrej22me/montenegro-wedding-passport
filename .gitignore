@@ -4,6 +4,7 @@ out
 .vercel
 *.tsbuildinfo
 .env*
+!.env.example
 .DS_Store
 npm-debug.log*
 

@@ -1,36 +1,35 @@
 import type { Metadata } from "next";
-import { Cinzel, Cormorant_Garamond, Pinyon_Script } from "next/font/google";
+import { Newsreader, Schibsted_Grotesk } from "next/font/google";
+import { COUPLE } from "@/data/weddingData";
 import "./globals.css";
 
-const cinzel = Cinzel({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-cinzel",
-});
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  display: "swap",
   style: ["normal", "italic"],
-  variable: "--font-cormorant",
+  axes: ["opsz"],
+  variable: "--font-newsreader",
+  fallback: ["Georgia", "serif"],
 });
 
-const pinyon = Pinyon_Script({
+const grotesk = Schibsted_Grotesk({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-pinyon",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-grotesk",
+  fallback: ["Helvetica Neue", "Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
-  title: "A Journey Through Montenegro",
-  description: "Our wedding weekend on the Montenegrin coast.",
+  title: { default: COUPLE.names, template: `%s · ${COUPLE.names}` },
+  description: COUPLE.invite,
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${cormorant.variable} ${pinyon.variable}`}>
+    <html lang="en" className={`${newsreader.variable} ${grotesk.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );

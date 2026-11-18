@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RSVP</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Schibsted+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; overflow: hidden; width: {{rootW}}px; height: {{rootH}}px; background: #F3F0E8; color: #16282B; font-family: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif">
+
+  <sc-if value="{{isPhone}}" hint-placeholder-val="{{ true }}">
+    <header style="position: absolute; top: 0; left: 0; right: 0; height: 60px; box-sizing: border-box; padding: 0 12px 0 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(22,40,43,0.12); background: #F3F0E8; z-index: 3">
+      <a href="Main.dc.html" style="font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 24px; text-decoration: none; color: #16282B">N&amp;S</a>
+      <a href="Weekend.dc.html" style="height: 44px; padding: 0 8px; display: flex; align-items: center; font-size: 15px; font-weight: 500; color: #16282B">The weekend</a>
+    </header>
+  </sc-if>
+
+  <div style="position: absolute; left: 0; right: 0; top: {{bodyTop}}px; bottom: {{bodyBottom}}px; overflow-y: auto">
+    <div style="max-width: 440px; margin: 0 auto; padding: 0 20px 32px; box-sizing: border-box">
+
+      <sc-if value="{{isChoose}}" hint-placeholder-val="{{ true }}">
+        <div style="padding-top: 40px; display: flex; flex-direction: column; gap: 16px">
+          <div style="position: relative; background: #FBF9F4; border: 1px solid #16282B; padding: 6px; box-shadow: 0 10px 30px rgba(22,40,43,0.10)">
+            <div style="border: 1px solid rgba(22,40,43,0.35); padding: 44px 22px 26px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px">
+              <p style="margin: 0; font-size: 13px; font-weight: 600; color: #A3471F">Kindly reply by 1 May 2027</p>
+              <h1 style="margin: 4px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 300; font-size: 46px; line-height: 0.95; letter-spacing: -0.02em">Nicole <span style="font-style: italic; color: #A3471F">&amp;</span> Scott</h1>
+              <p style="margin: 0; font-size: 14px; color: #4A5A5C">5–9 August 2027 · Montenegro</p>
+              <span aria-hidden="true" style="width: 40px; height: 1px; background: #A3471F; margin: 10px 0 4px"></span>
+              <h2 style="margin: 0 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 400; font-size: 28px">Will you join us?</h2>
+              <button type="button" onClick="{{goAccept}}" style="width: 100%; height: 56px; border: 0; border-radius: 2px; background: #16282B; color: #F3F0E8; font: 500 17px 'Schibsted Grotesk', Arial, sans-serif; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 9.5l4 4 8-9"></path></svg>
+                Joyfully accept
+              </button>
+              <button type="button" onClick="{{goDecline}}" style="width: 100%; height: 56px; border: 1px solid #16282B; border-radius: 2px; background: transparent; color: #16282B; font: 500 17px 'Schibsted Grotesk', Arial, sans-serif; cursor: pointer">Regretfully decline</button>
+            </div>
+            <div aria-hidden="true" style="position: absolute; right: 18px; top: -26px; transform: rotate(5deg); filter: drop-shadow(0 2px 4px rgba(22,40,43,0.2))">
+              <div style="width: 70px; height: 90px; box-sizing: border-box; padding: 5px; background: #FBF9F4; -webkit-mask: radial-gradient(circle, #0000 3.1px, #000 3.6px) -5px -5px/10px 10px, linear-gradient(#000 0 0) content-box; mask: radial-gradient(circle, #0000 3.1px, #000 3.6px) -5px -5px/10px 10px, linear-gradient(#000 0 0) content-box">
+                <img src="/images/venues/5-citadela-budva.jpg" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover">
+              </div>
+            </div>
+            <svg width="78" height="78" viewBox="0 0 96 96" aria-hidden="true" style="position: absolute; right: 60px; top: -14px; transform: rotate(-16deg); mix-blend-mode: multiply; opacity: 0.85">
+              <defs><path id="rsvpArc" d="M48 48m-34 0a34 34 0 1 1 68 0a34 34 0 1 1-68 0"></path></defs>
+              <circle cx="48" cy="48" r="44" fill="none" stroke="#A3471F" stroke-width="1.8"></circle>
+              <circle cx="48" cy="48" r="25" fill="none" stroke="#A3471F" stroke-width="1.2"></circle>
+              <text font-family="Schibsted Grotesk, Arial, sans-serif" font-size="10" font-weight="600" letter-spacing="1.6" fill="#A3471F"><textPath href="#rsvpArc">BUDVA · MONTENEGRO · </textPath></text>
+              <text x="48" y="53" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="16" fill="#A3471F">RSVP</text>
+            </svg>
+          </div>
+          <p style="margin: 0; text-align: center; font-size: 13px; color: #4A5A5C">Already replied? Your link is in your email.</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isStep}}" hint-placeholder-val="{{ false }}">
+        <div style="padding-top: 12px; display: flex; flex-direction: column; gap: 6px">
+          <div style="display: flex; align-items: center; justify-content: space-between">
+            <button type="button" onClick="{{back}}" style="height: 44px; padding: 0; border: 0; background: transparent; color: #16282B; font: 500 15px 'Schibsted Grotesk', Arial, sans-serif; display: flex; align-items: center; gap: 6px; cursor: pointer">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M10 3L5 8l5 5"></path></svg>
+              Back
+            </button>
+            <sc-if value="{{showProgress}}" hint-placeholder-val="{{ true }}"><span style="font-size: 13px; font-weight: 500; color: #4A5A5C; font-variant-numeric: tabular-nums">Step {{stepNum}} of 3</span></sc-if>
+          </div>
+          <sc-if value="{{showProgress}}" hint-placeholder-val="{{ true }}">
+            <div aria-hidden="true" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px">
+              <sc-for list="{{bars}}" as="b" hint-placeholder-count="3"><span style="height: 3px; background: {{b.color}}"></span></sc-for>
+            </div>
+          </sc-if>
+          <h1 style="margin: 18px 0 18px; font-family: 'Newsreader', Georgia, serif; font-weight: 300; font-size: 40px; line-height: 1.02; letter-spacing: -0.02em">{{stepTitle}}</h1>
+
+          <sc-if value="{{isWho}}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 16px">
+              <sc-for list="{{guestRows}}" as="g" hint-placeholder-count="1">
+                <div style="display: flex; flex-direction: column; gap: 6px">
+                  <label for="{{g.id}}" style="font-size: 14px; font-weight: 500">{{g.label}}</label>
+                  <div style="display: flex; gap: 8px">
+                    <input id="{{g.id}}" type="text" autocomplete="{{g.ac}}" value="{{g.value}}" onChange="{{g.set}}" style="flex: 1; min-width: 0; height: 52px; box-sizing: border-box; padding: 0 14px; border: 1px solid #16282B; border-radius: 2px; background: #FAF8F2; color: #16282B; font: 400 16px 'Schibsted Grotesk', Arial, sans-serif">
+                    <sc-if value="{{g.canRemove}}" hint-placeholder-val="{{ false }}">
+                      <button type="button" onClick="{{g.remove}}" aria-label="{{g.removeLabel}}" style="width: 52px; height: 52px; flex-shrink: 0; border: 1px solid rgba(22,40,43,0.3); border-radius: 2px; background: transparent; color: #16282B; display: flex; align-items: center; justify-content: center; cursor: pointer">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"></path></svg>
+                      </button>
+                    </sc-if>
+                  </div>
+                </div>
+              </sc-for>
+              <sc-if value="{{canAdd}}" hint-placeholder-val="{{ true }}">
+                <button type="button" onClick="{{addGuest}}" style="height: 52px; border: 1px dashed rgba(22,40,43,0.45); border-radius: 2px; background: transparent; color: #16282B; font: 500 15px 'Schibsted Grotesk', Arial, sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3v10M3 8h10"></path></svg>
+                  Add a guest
+                </button>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{isEvents}}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column">
+              <sc-for list="{{eventRows}}" as="ev" hint-placeholder-count="6">
+                <div style="padding: 14px 0 16px; border-top: 1px solid rgba(22,40,43,0.16); display: flex; flex-direction: column; gap: 12px">
+                  <div style="display: flex; align-items: center; gap: 12px">
+                    <div style="width: 50px; height: 50px; flex-shrink: 0; box-sizing: border-box; padding: 4px; background: #FBF9F4; -webkit-mask: radial-gradient(circle, #0000 3.1px, #000 3.6px) -5px -5px/10px 10px, linear-gradient(#000 0 0) content-box; mask: radial-gradient(circle, #0000 3.1px, #000 3.6px) -5px -5px/10px 10px, linear-gradient(#000 0 0) content-box"><img src="{{ev.img}}" alt="" style="display: block; width: 100%; height: 100%; object-fit: cover"></div>
+                    <span style="display: flex; flex-direction: column; gap: 2px">
+                      <span style="font-family: 'Newsreader', Georgia, serif; font-size: 21px; line-height: 1.1">{{ev.title}}</span>
+                      <span style="font-size: 13px; color: #4A5A5C; font-variant-numeric: tabular-nums">{{ev.when}}</span>
+                    </span>
+                  </div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                    <sc-for list="{{ev.chips}}" as="ch" hint-placeholder-count="2">
+                      <sc-if value="{{ch.on}}" hint-placeholder-val="{{ true }}">
+                        <button type="button" aria-pressed="true" onClick="{{ch.toggle}}" style="height: 44px; padding: 0 16px 0 12px; border: 1px solid #16282B; border-radius: 22px; background: #16282B; color: #F3F0E8; font: 500 15px 'Schibsted Grotesk', Arial, sans-serif; display: flex; align-items: center; gap: 8px; cursor: pointer">
+                          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.5"></path></svg>
+                          {{ch.label}}
+                        </button>
+                      </sc-if>
+                      <sc-if value="{{ch.off}}" hint-placeholder-val="{{ false }}">
+                        <button type="button" aria-pressed="false" onClick="{{ch.toggle}}" style="height: 44px; padding: 0 16px 0 12px; border: 1px dashed rgba(22,40,43,0.45); border-radius: 22px; background: transparent; color: #4A5A5C; font: 500 15px 'Schibsted Grotesk', Arial, sans-serif; display: flex; align-items: center; gap: 8px; cursor: pointer">
+                          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3v10M3 8h10"></path></svg>
+                          {{ch.label}}
+                        </button>
+                      </sc-if>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{isContact}}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 16px">
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <label for="rsvp-email" style="font-size: 14px; font-weight: 500">Email</label>
+                <input id="rsvp-email" type="email" autocomplete="email" value="{{email}}" onChange="{{setEmail}}" style="height: 52px; box-sizing: border-box; padding: 0 14px; border: 1px solid #16282B; border-radius: 2px; background: #FAF8F2; color: #16282B; font: 400 16px 'Schibsted Grotesk', Arial, sans-serif">
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <label for="rsvp-phone" style="font-size: 14px; font-weight: 500">WhatsApp <span style="font-weight: 400; color: #4A5A5C">(optional)</span></label>
+                <input id="rsvp-phone" type="tel" autocomplete="tel" value="{{phone}}" onChange="{{setPhone}}" style="height: 52px; box-sizing: border-box; padding: 0 14px; border: 1px solid #16282B; border-radius: 2px; background: #FAF8F2; color: #16282B; font: 400 16px 'Schibsted Grotesk', Arial, sans-serif">
+              </div>
+              <div style="margin-top: 10px; background: #E8E1D3; padding: 16px; display: flex; flex-direction: column; gap: 4px">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px">
+                  <span style="font-size: 12px; font-weight: 600; color: #4A5A5C">Your reply</span>
+                  <button type="button" onClick="{{editEvents}}" style="height: 32px; padding: 0; border: 0; background: transparent; color: #16282B; font: 500 14px 'Schibsted Grotesk', Arial, sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Edit</button>
+                </div>
+                <sc-for list="{{summary}}" as="s" hint-placeholder-count="2">
+                  <div style="display: flex; justify-content: space-between; gap: 12px; padding: 6px 0">
+                    <span style="font-family: 'Newsreader', Georgia, serif; font-size: 19px">{{s.name}}</span>
+                    <span style="font-size: 14px; color: #4A5A5C; font-variant-numeric: tabular-nums">{{s.count}}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{isDecline}}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; flex-direction: column; gap: 16px">
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <label for="dec-name" style="font-size: 14px; font-weight: 500">Your name</label>
+                <input id="dec-name" type="text" autocomplete="name" value="{{dname}}" onChange="{{setDname}}" style="height: 52px; box-sizing: border-box; padding: 0 14px; border: 1px solid #16282B; border-radius: 2px; background: #FAF8F2; color: #16282B; font: 400 16px 'Schibsted Grotesk', Arial, sans-serif">
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <label for="dec-note" style="font-size: 14px; font-weight: 500">A note to Nicole and Scott <span style="font-weight: 400; color: #4A5A5C">(optional)</span></label>
+                <textarea id="dec-note" rows="4" value="{{note}}" onChange="{{setNote}}" style="min-height: 110px; box-sizing: border-box; padding: 12px 14px; border: 1px solid #16282B; border-radius: 2px; background: #FAF8F2; color: #16282B; font: 400 16px 'Schibsted Grotesk', Arial, sans-serif; resize: vertical"></textarea>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <label for="dec-email" style="font-size: 14px; font-weight: 500">Email</label>
+                <input id="dec-email" type="email" autocomplete="email" value="{{email}}" onChange="{{setEmail}}" style="height: 52px; box-sizing: border-box; padding: 0 14px; border: 1px solid #16282B; border-radius: 2px; background: #FAF8F2; color: #16282B; font: 400 16px 'Schibsted Grotesk', Arial, sans-serif">
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{isDone}}" hint-placeholder-val="{{ false }}">
+        <div style="padding-top: 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px">
+          <svg width="128" height="128" viewBox="0 0 96 96" aria-hidden="true" style="transform: rotate(-10deg)">
+            <defs><path id="doneArc" d="M48 48m-34 0a34 34 0 1 1 68 0a34 34 0 1 1-68 0"></path></defs>
+            <circle cx="48" cy="48" r="44" fill="none" stroke="#A3471F" stroke-width="1.6"></circle>
+            <circle cx="48" cy="48" r="25" fill="none" stroke="#A3471F" stroke-width="1"></circle>
+            <text font-family="Schibsted Grotesk, Arial, sans-serif" font-size="9.5" font-weight="600" letter-spacing="1.8" fill="#A3471F"><textPath href="#doneArc">{{doneRing}}</textPath></text>
+            <text x="48" y="46" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="15" fill="#A3471F">{{doneDate}}</text>
+            <text x="48" y="60" text-anchor="middle" font-family="Schibsted Grotesk, Arial, sans-serif" font-size="8" font-weight="600" letter-spacing="1" fill="#A3471F">N&amp;S</text>
+          </svg>
+          <h1 style="margin: 6px 0 0; font-family: 'Newsreader', Georgia, serif; font-weight: 300; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance">{{doneTitle}}</h1>
+
+          <sc-if value="{{doneAccepted}}" hint-placeholder-val="{{ true }}">
+            <div style="width: 100%; display: flex; flex-direction: column; gap: 18px; margin-top: 6px">
+              <div style="width: 100%; border-top: 1px solid #16282B; border-bottom: 1px solid rgba(22,40,43,0.18); text-align: left">
+                <sc-for list="{{summary}}" as="s" hint-placeholder-count="2">
+                  <div style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(22,40,43,0.1)">
+                    <span style="font-family: 'Newsreader', Georgia, serif; font-size: 19px">{{s.name}}</span>
+                    <span style="font-size: 14px; color: #4A5A5C; font-variant-numeric: tabular-nums">{{s.count}}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <a href="#" style="display: grid; grid-template-columns: minmax(0, 1fr) 20px; align-items: center; gap: 12px; padding: 18px 20px; background: #16282B; color: #F3F0E8; text-decoration: none; border-radius: 2px; text-align: left">
+                <span style="display: flex; flex-direction: column; gap: 3px">
+                  <span style="font-size: 17px; font-weight: 500">Add travel details</span>
+                  <span style="font-size: 14px; color: #C9D3D2">Flights, airport pickup, dietary needs</span>
+                </span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
+              </a>
+              <p style="margin: 0; font-size: 14px; color: #4A5A5C">We've emailed you this link too.</p>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{doneDeclined}}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-size: 20px; color: #4A5A5C">We'll miss you.</p>
+          </sc-if>
+
+          <a href="Weekend.dc.html" style="min-height: 44px; display: flex; align-items: center; font-size: 15px; font-weight: 500; color: #16282B">Back to the weekend</a>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <sc-if value="{{showFooter}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 88px; box-sizing: border-box; padding: 16px 20px; background: #F3F0E8; border-top: 1px solid rgba(22,40,43,0.12); z-index: 3">
+      <div style="max-width: 400px; margin: 0 auto">
+        <button type="button" onClick="{{footGo}}" disabled="{{footDisabled}}" style="width: 100%; height: 56px; border: 0; border-radius: 2px; background: #16282B; color: #F3F0E8; font: 500 17px 'Schibsted Grotesk', Arial, sans-serif; display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; opacity: {{footOp}}">
+          {{footLabel}}
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
+        </button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"start":{"editor":"enum","options":["choose","who","events","contact","done","decline","declined"],"default":"choose"},"demo":{"editor":"boolean","default":false},"mode":{"editor":"enum","options":["phone","panel"],"default":"phone"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.EV = [
+      { title: 'Welcome drinks', when: 'Thu 5 Aug · 19:00', img: '/images/venues/1-forza-kuk.jpg' },
+      { title: 'Boat day', when: 'Fri 6 Aug · 10:30', img: '/images/venues/2-boat-day.jpg' },
+      { title: 'Lunch', when: 'Fri 6 Aug · 13:30', img: '/images/venues/3-ribarsko-selo.jpg' },
+      { title: 'Rehearsal dinner', when: 'Fri 6 Aug · 20:00', img: '/images/venues/4-castel-savina.jpg' },
+      { title: 'The wedding', when: 'Sat 7 Aug · 18:00', img: '/images/venues/5-citadela-budva.jpg' },
+      { title: 'Farewell', when: 'Sun 8 Aug · 13:00', img: '/images/venues/6-aura-beach.jpg' }
+    ];
+    const demo = !!props.demo;
+    this.state = {
+      step: props.start || 'choose',
+      guests: demo ? ['Anna Harper', 'James Harper'] : [''],
+      att: demo ? { 1: [true, false] } : {},
+      email: demo ? 'anna.harper@email.com' : '',
+      phone: '', note: '', dname: demo ? 'Anna Harper' : '', declined: (props.start === 'declined')
+    };
+  }
+  componentDidUpdate(prev) {
+    if (prev.start !== this.props.start && this.props.start) this.setState({ step: this.props.start });
+  }
+  on(ei, gi) { const r = this.state.att[ei]; return r && r[gi] === false ? false : true; }
+  first(n, i) { const f = (n || '').trim().split(/\s+/)[0]; return f || ('Guest ' + (i + 1)); }
+  renderVals() {
+    const st = this.state, step = st.step;
+    const panel = this.props.mode === 'panel';
+    const guests = st.guests;
+    const set = (patch) => this.setState(patch);
+    const emailOk = /\S+@\S+\.\S+/.test(st.email);
+    const whoOk = (guests[0] || '').trim().length > 1;
+    const stepNum = { who: 1, events: 2, contact: 3 }[step] || 0;
+    const isStep = ['who', 'events', 'contact', 'decline'].indexOf(step) >= 0;
+    const counts = guests.map((g, gi) => this.EV.filter((e, ei) => this.on(ei, gi)).length);
+    const summary = guests.map((g, gi) => ({ name: (g || '').trim() || ('Guest ' + (gi + 1)), count: counts[gi] === 0 ? 'Not attending' : counts[gi] + ' of ' + this.EV.length + ' events' }));
+    const firsts = guests.map((g, i) => this.first(g, i));
+    const joinNames = (a) => a.length <= 1 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+    const months = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+    const d = new Date();
+    let foot = { label: '', go: null, ok: true };
+    if (step === 'who') foot = { label: 'Continue', go: () => set({ step: 'events' }), ok: whoOk };
+    if (step === 'events') foot = { label: 'Continue', go: () => set({ step: 'contact' }), ok: true };
+    if (step === 'contact') foot = { label: 'Send reply', go: () => set({ step: 'done', declined: false }), ok: emailOk };
+    if (step === 'decline') foot = { label: 'Send reply', go: () => set({ step: 'done', declined: true }), ok: emailOk && st.dname.trim().length > 1 };
+    const back = { who: 'choose', events: 'who', contact: 'events', decline: 'choose' }[step] || 'choose';
+    const declinedDone = step === 'declined' || (step === 'done' && st.declined);
+    return {
+      rootW: panel ? 720 : 390, rootH: panel ? 836 : 844,
+      isPhone: !panel,
+      bodyTop: panel ? 0 : 60,
+      bodyBottom: isStep ? 88 : 0,
+      isChoose: step === 'choose', isStep: isStep,
+      isWho: step === 'who', isEvents: step === 'events', isContact: step === 'contact', isDecline: step === 'decline',
+      isDone: step === 'done' || step === 'declined',
+      showProgress: stepNum > 0, stepNum: stepNum,
+      bars: [1, 2, 3].map((i) => ({ color: i <= stepNum ? '#A3471F' : 'rgba(22,40,43,0.15)' })),
+      stepTitle: { who: "Who's coming?", events: 'Which events?', contact: 'Where can we reach you?', decline: "We'll miss you" }[step] || '',
+      goAccept: () => set({ step: 'who' }), goDecline: () => set({ step: 'decline' }),
+      back: () => set({ step: back }),
+      guestRows: guests.map((g, i) => ({
+        id: 'guest-' + i, label: i === 0 ? 'Your name' : 'Guest ' + (i + 1), ac: i === 0 ? 'name' : 'off', value: g,
+        set: (e) => { const n = this.state.guests.slice(); n[i] = e.target.value; set({ guests: n }); },
+        canRemove: i > 0, removeLabel: 'Remove guest ' + (i + 1),
+        remove: () => {
+          const n = this.state.guests.slice(); n.splice(i, 1);
+          const att = {}; Object.keys(this.state.att).forEach((k) => { const r = this.state.att[k].slice(); r.splice(i, 1); att[k] = r; });
+          set({ guests: n, att: att });
+        }
+      })),
+      canAdd: guests.length < 6,
+      addGuest: () => set({ guests: this.state.guests.concat(['']) }),
+      eventRows: this.EV.map((e, ei) => ({
+        title: e.title, when: e.when, img: e.img,
+        chips: guests.map((g, gi) => {
+          const on = this.on(ei, gi);
+          return { label: firsts[gi], on: on, off: !on, toggle: () => {
+            const att = Object.assign({}, this.state.att); const r = (att[ei] || []).slice();
+            r[gi] = !this.on(ei, gi); att[ei] = r; set({ att: att });
+          } };
+        })
+      })),
+      email: st.email, phone: st.phone, note: st.note, dname: st.dname,
+      setEmail: (e) => set({ email: e.target.value }), setPhone: (e) => set({ phone: e.target.value }),
+      setNote: (e) => set({ note: e.target.value }), setDname: (e) => set({ dname: e.target.value }),
+      editEvents: () => set({ step: 'events' }),
+      summary: summary,
+      doneAccepted: !declinedDone, doneDeclined: declinedDone,
+      doneTitle: declinedDone ? 'Thank you, ' + this.first(st.dname, 0) + '.' : 'Thank you, ' + joinNames(firsts) + '.',
+      doneRing: declinedDone ? 'WITH LOVE · NICOLE & SCOTT · ' : 'REPLY RECEIVED · SEE YOU THERE · ',
+      doneDate: String(d.getDate()).padStart(2, '0') + ' ' + months[d.getMonth()],
+      showFooter: isStep,
+      footLabel: foot.label, footGo: foot.go, footDisabled: !foot.ok, footOp: foot.ok ? 1 : 0.35
+    };
+  }
+}
+</script>
+</body>
+</html>
